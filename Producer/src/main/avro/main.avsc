@@ -1,0 +1,28 @@
+{
+  "type" : "record",
+  "name" : "Insider",
+  "namespace": "core.avro",
+  "fields" : [
+    {
+    "name" : "id",
+    "type" : ["null","string"]
+    },
+    {
+    "name" : "quantityOwnedFollowingTransaction",
+    "type" : [
+      {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "scale": 0,
+        "precision": 10
+      },"null"]
+    }
+    ,{
+      "name": "transactionDate",
+      "type": [{
+        "type": "int",
+        "logicalType": "date"
+      },"null"]
+    }
+  ]
+}
