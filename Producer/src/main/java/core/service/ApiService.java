@@ -47,15 +47,13 @@ public class ApiService {
         var pojos = Arrays.stream(results).map(object -> mapper.convertValue(object,Insider.class)).collect(Collectors.toList());
 
         List<SpecificRecord> avroList = new ArrayList<>();
+        
         for(var pojo: pojos){
-            var obj = (SpecificRecord) avroMapper.mapJavaPojoToAvroRecord(pojo, "core.avro.Insider");
-            avroList.add(obj);
-        }
-
-        for(var record : avroList){
-           System.out.println("Sending Message ...");
+            var record = (SpecificRecord) avroMapper.mapJavaPojoToAvroRecord(pojo, "core.avro.Insider");
             sendMessage(record);
         }
+
+        
 
     }
 }
